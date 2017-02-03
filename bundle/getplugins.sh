@@ -4,6 +4,7 @@ git clone https://github.com/Valloric/YouCompleteMe.git YouCompleteMe
 cd YouCompleteMe
 git submodule update --init --recursive
 ./install.py --clang-completer
+cd ..
 
 git clone https://github.com/altercation/vim-colors-solarized.git
 
