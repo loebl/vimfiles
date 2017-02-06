@@ -208,8 +208,9 @@ set tags+=D:\projekte\ext\tags
 "let OmniCpp_DisplayMode=1
 
   "UpdateTages function to update/create tags in current working directory
+  "using universal-ctags (ctags.io)
 function! UpdateTags()
-  execute ":! ctags --set=yes --languages=c,c++ --c++-kinds=+cegmsvpl --fields=+liakKnsztS --extra=+fq --langmap=C++:+.cu.inl -R ."
+  execute ":! ctags --sort=yes --languages=c,c++ --c++-kinds=+cegmsvpl --fields=+liakKnsztS --extras=+fq --langmap=C++:+.cu.inl -R ."
   echohl StatusLine | echo "C/C++ tag updated" | echohl None
 endfunction
 command Ut call UpdateTags()
