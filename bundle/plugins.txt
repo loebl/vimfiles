@@ -23,3 +23,6 @@ hg clone https://bitbucket.org/ns9tks/vim-l9
 
 FuzzyFinder: http://www.vim.org/scripts/script.php?script_id=1984
 hg clone https://bitbucket.org/ns9tks/vim-fuzzyfinder
+
+Lawrencium (mercurial integration): https://bolt80.com/lawrencium/
+hg clone https://bitbucket.org/ludovicchabant/vim-lawrencium

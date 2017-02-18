@@ -33,8 +33,11 @@
   - Yank: y
   - Filter through external program: !
   - Text formatting: gq
+  - Text to lowercase/uppercase: gu/gU
   - Shift text left or right: <, >
   - Define a fold: zf
+
+## 3.1 Motions
 - simple motions:
   - h or l: left or right
   - k or j: up or down
@@ -104,12 +107,58 @@
   - hlsearch, hls: highligh all search results
   - incsearch, is: incremental search, start search while typing
 
-# 6. Tag usage
+# 6. Browsing Code
+
+## 6.1 Tags
+- Based on tags an the such: requires at least ctags
+  - call ctags with "--fields=+iaS --c++-kinds=+p" to include declarations, not only definitions
 - <C-]> (ü): jump to tag, same as :tag (ID)
 - <C-T> Jump back (in the tag stack: usually to the last location)
 - :tag: jump one entry in the tag stack forward
 - :tags: show the tag stack
 - :ts (ID): tselect: searches for ID and shows all matching results
 - g]: like <C-]> but uses :ts
+- g <C-]>: jump directly if only one matching tag, present list otherwise
 - :tn: jump to next matching tag
 - :tp: jump to previous matching tag
+- Keyword search can also search in included files (see include-option)
+  - [i display first line, that contains keyword under cursor, search from beginning of file
+  - ]i display first line, that contains keyword under cursor, search from cursor position
+  - [I like [i, but display all found lines
+  - ]I like ]i, but display all found lines
+  - CTRL-W i like [i but open search found in new window
+
+## 6.2 Code folding
+Folds are created automatically, when foldmethod is set to syntax or expr. Other options:
+- foldnestmax: how many layers of folds will be created. 20 max
+- foldstartlevel: how many folds are closed, when opening a file. -1: ignored, 0: all, 99: none
+
+Commands to browse folds. All fold commands start with a z.
+- zc: close one fold under cursor
+- zC: close all folds under cursor
+- za: toggle fold under cursor
+- zv: open enough folds to make the cursor line not folded
+- zm: fold more: close one level of folds, if all are closed, nothing happens
+- zM: close all folds
+- zr: reduce folding, open one level of folds
+- zR: open all folds
+- zi: toggle all folds closed/all fold open
+
+# 7. Tabs
+Just what one would expect from tabs, independent window layouts on different tabs.
+- :tabnew: open new tab
+- :tabedit <file>: open file in new tab
+- :tabclose: close current tab
+- :tabonly: close all tabs, except for the current one
+- :tabnext/gt: go to next tabpage
+- :tabprevious/gT: go to previous tabpage
+- todo: moving tabs, tabline/guitable setting
+
+# 8. Refactoring code with vim
+There are articles on the web: http://artemave.github.io/2013/02/14/refactoring-in-cmd-line-and-vim/
+also this answer on stackoverflow: http://stackoverflow.com/questions/8781975/refactoring-in-vim
+vimcasts.org also has a ton of learning material
+
+# 9. Completion
+- in insert mode, CTRL-N, which uses completers based on the complete option,
+  CTRL-X as base stroke to choose a completer
