@@ -1,5 +1,5 @@
-splice: http://sjl.bitbucket.org/splice.vim/
-hg clone https://bitbucket.org/sjl/splice.vim splice
+splice: https://sjl.bitbucket.io/splice.vim/
+git clone https://github.com/sjl/splice.vim.git splice
 
 YouCopmpleteMe: https://github.com/Valloric/YouCompleteMe
 git clone https://github.com/Valloric/YouCompleteMe.git YouCompleteMe

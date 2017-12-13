@@ -159,6 +159,9 @@ set number
   " show the cursor position all the time
 "set ruler
 
+  "do not wrap lines
+set nowrap
+
 if has('gui_running')
     "set a font for the gui
   if has('win32') || has('win64')
