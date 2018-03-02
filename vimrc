@@ -21,8 +21,18 @@ execute pathogen#infect()
 let g:ycm_error_symbol = 'e>'
 let g:ycm_warning_symbol = 'w>'
 let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-  "set for windows environment, might need modification for unix
+  "put keywords of current programming language into identifier list
+"let g:ycm_seed_identifiers_with_syntax = 1
+  "increase number of chars typed before menu pops up
+let g:ycm_min_num_of_chars_for_completion = 3
+  "suppress identifiers with less than 3 characters
+let g:ycm_min_num_identifier_candidate_chars = 3
+  "limit number of semantic candidates
+let g:ycm_max_num_candidates = 12
+  "limit number of identifier candidates
+let g:ycm_max_num_identifier_candidates = 12
+  "automatically opens localtion list if diagnostics update was forced
+let g:ycm_open_loclist_on_ycm_diags = 1
 if has('win32') || has('win64')
   let g:ycm_global_ycm_extra_conf = '~/vimfiles/ycm_windowsDefaultConf.py'
 else
