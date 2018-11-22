@@ -10,6 +10,9 @@ nnoremap gü g<C-]>
   "hooray for unused german umlauts!
 let mapleader="ä"
 
+  "remap tag completion to CTRL-X CTRL-B
+inoremap <C-X><C-b> <C-X><C-]>
+
 " }}}
 
 " Plugins + Options {{{
@@ -74,18 +77,6 @@ let g:ycm_filetype_whitelist = {
   \ 'yaml' : 1
   \}
 
-  "Splice (hg merge tool) config
-  "nothing currently here!
-  "Don't use FuzzyFinder anymore for now
-"if has('win32') || has('win64')
-"  let g:fuf_dataDir = '~/vimfiles/.cache-fufData'
-"else
-"  let g:fuf_dataDir = '~/.cache/vim_fufData'
-"endif
-"  "FuzzyFinder custom key bindings
-"nnoremap <F2> :FufTag<CR>
-"nnoremap <F3> :FufFile<CR>
-
   "settings for localvimrc. sandbox: source lvimrc files in  sandbox for security reasons
 let g:localvimrc_sandbox=0
   "ask before sourcing a lvimrc file
@@ -144,6 +135,9 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
   "disable backup files
 set nobackup
+
+  "do not place swap files in the local directory
+set dir-=.
 
   "enable syntax highlighting, if colors are available
 if &t_Co > 2 || has("gui_running")
@@ -213,16 +207,16 @@ endif
   "syntax: fold by the defined syntax rules. Not every language may provide one
   "indent: fold by indentation level
 set foldmethod=syntax
-set foldnestmax=3
+set foldnestmax=5
   "all folds open
-set foldlevel=4
+set foldlevel=6
 
 " }}}
 
 " Vim Options: programming related {{{
 
   "supply a tags file to look up function names and symbols
-set tags+=D:\projekte\ext\tags
+"set tags+=D:\projekte\ext\tags
 
   "OmniCppComplete options. TODO: Omnicomplete vs YouCompleteMe.
 "let OmniCpp_DisplayMode=1
