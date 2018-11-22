@@ -76,14 +76,15 @@ let g:ycm_filetype_whitelist = {
 
   "Splice (hg merge tool) config
   "nothing currently here!
-if has('win32') || has('win64')
-  let g:fuf_dataDir = '~/vimfiles/.cache-fufData'
-else
-  let g:fuf_dataDir = '~/.cache/vim_fufData'
-endif
-  "FuzzyFinder custom key bindings
-nnoremap <F2> :FufTag<CR>
-nnoremap <F3> :FufFile<CR>
+  "Don't use FuzzyFinder anymore for now
+"if has('win32') || has('win64')
+"  let g:fuf_dataDir = '~/vimfiles/.cache-fufData'
+"else
+"  let g:fuf_dataDir = '~/.cache/vim_fufData'
+"endif
+"  "FuzzyFinder custom key bindings
+"nnoremap <F2> :FufTag<CR>
+"nnoremap <F3> :FufFile<CR>
 
   "settings for localvimrc. sandbox: source lvimrc files in  sandbox for security reasons
 let g:localvimrc_sandbox=0
@@ -102,6 +103,9 @@ set autoindent
   "enable filetype plugins, so VIM tries to autodetect the filetype and use
   " appropriate indention rules etc
 filetype plugin indent on
+
+  "how many spaces a tab counts for
+set tabstop=8
 
   "number of spaces for indentation
 set shiftwidth=2
@@ -135,6 +139,8 @@ endif
 " }}}
 
 " Vim Options: general, appearance {{{
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
   "disable backup files
 set nobackup
@@ -314,7 +320,9 @@ function MyDiff()
   endif
 endfunction
 
-set diffexpr=MyDiff()
+if has('win32') || has('win64')
+  set diffexpr=MyDiff()
+endif
 
 " }}}
 
