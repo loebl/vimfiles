@@ -206,7 +206,7 @@ endif
   "folding
   "syntax: fold by the defined syntax rules. Not every language may provide one
   "indent: fold by indentation level
-set foldmethod=syntax
+"set foldmethod=syntax
 set foldnestmax=5
   "all folds open
 set foldlevel=6
@@ -224,7 +224,7 @@ set foldlevel=6
   "UpdateTages function to update/create tags in current working directory
   "using universal-ctags (ctags.io)
 function! UpdateTags()
-  execute ":! ctags --sort=yes --languages=c,c++ --c++-kinds=+cegmsvpl --fields=+liakKnsztS --extras=+fq --langmap=C++:+.cu.inl -R ."
+  execute ":! ctags --languages=c,c++ --c++-kinds=+pl --fields=+iaKnS --extras=+fq --langmap=C++:+.cu.inl -R ."
   echohl StatusLine | echo "C/C++ tag updated" | echohl None
 endfunction
 command Ut call UpdateTags()
@@ -269,6 +269,10 @@ if has('win32') || has('win64')
   set errorformat+=%-GScanning\ %m
     "remove cmake config lines
   set errorformat+=%-G--\ %m
+
+    "follow make recursion
+  set errorformat+=%D%*\\a[%*\\d]:\ Entering\ directory\ `%f'
+  set errorformat+=%X%*\\a[%*\\d]:\ Leaving\ directory\ `%f'
 
     "omit empty lines
   set errorformat+=%-G%\\s%#
