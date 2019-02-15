@@ -145,11 +145,11 @@ if &t_Co > 2 || has("gui_running")
 endif
 
   "set a color scheme. Other good ones: liquidcarbon, oceandeep, solarized
-if has('gui')
+if has('win32') || has('win64')
+  colorscheme oceandeep
+else
   let g:solarized_italic = 0
   colorscheme solarized
-elseif has('win32') || has('win64')
-  colorscheme oceandeep
 endif
 set background=dark
 
