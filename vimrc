@@ -85,16 +85,6 @@ let g:localvimrc_ask=0
 " }}}
 
 " Vim Options: editing, indenting {{{
-  "allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-  "automatically indent with the same whitespace as before
-set autoindent
-
-  "enable filetype plugins, so VIM tries to autodetect the filetype and use
-  " appropriate indention rules etc
-filetype plugin indent on
-
   "how many spaces a tab counts for
 set tabstop=8
 
@@ -108,7 +98,7 @@ set softtabstop=2
 set expandtab
 
   "set automatic formatting options, see fo-table
-set formatoptions=croqnj
+"set formatoptions=croqnj
 set textwidth=100
 
   "show matching parantheses
@@ -131,18 +121,11 @@ endif
 
 " Vim Options: general, appearance {{{
 
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
-
   "disable backup files
 set nobackup
 
   "do not place swap files in the local directory
 set dir-=.
-
-  "enable syntax highlighting, if colors are available
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
 
   "set a color scheme. Other good ones: liquidcarbon, oceandeep, solarized
 if has('win32') || has('win64')
@@ -153,16 +136,11 @@ else
 endif
 set background=dark
 
-  "always show statusline
-set laststatus=2
   "Statusline options
 set statusline=%f%m%r%h%w[%{&ff}][%{&fenc}]%y%=[%p%%][%l,%c%V]
 
   "Height of the command line
 "set cmdheight=2
-
-  "search incrementally
-set incsearch
 
   "enable line numbers
 set number
@@ -214,9 +192,6 @@ set foldlevel=6
 " }}}
 
 " Vim Options: programming related {{{
-
-  "supply a tags file to look up function names and symbols
-"set tags+=D:\projekte\ext\tags
 
   "OmniCppComplete options. TODO: Omnicomplete vs YouCompleteMe.
 "let OmniCpp_DisplayMode=1
@@ -284,9 +259,6 @@ endif
   "adding ** to the path lets it search recursively through all subdirectories from the current one
   "for various commands (see path), for example :find
 set path+=**
-
-  "enables a menu above the status line when tabbing completions in the commandline
-set wildmenu
 
   "MyDiff for Windows quoting
 function MyDiff()
