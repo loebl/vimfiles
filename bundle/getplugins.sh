@@ -6,8 +6,6 @@ git submodule update --init --recursive
 ./install.py --clang-completer
 cd ..
 
-git clone https://github.com/altercation/vim-colors-solarized.git
-
 git clone https://github.com/embear/vim-localvimrc.git
 
 git clone https://github.com/mileszs/ack.vim.git
