@@ -44,38 +44,6 @@ endif
 nnoremap <leader>yf :YcmCompleter FixIt<CR>
 nnoremap <leader>yt :YcmCompleter GetType<CR>
 "let g:ycm_extra_conf_globlist = ['$HOME/vimfiles/.ycm*']
-  "languages supported by YouCompleteMe: C, C++, Obj-C, C#, Python, Go, Typescript, JavaScript
-  "Rust, other languages based on tags and syntax elements. Could move ycm to separate directory,
-  "enable YCM only for specific filetypes
-let g:ycm_filetype_whitelist = {
-  \ 'cpp' : 1,
-  \ 'cuda' : 1,
-  \ 'cs' : 1,
-  \ 'css' : 1,
-  \ 'dosbatch' : 1,
-  \ 'html' : 1,
-  \ 'htmldjango' : 1,
-  \ 'j': 1,
-  \ 'java' : 1,
-  \ 'javascript' : 1,
-  \ 'json' : 1,
-  \ 'jsp' : 1,
-  \ 'less' : 1,
-  \ 'lua' : 1,
-  \ 'make' : 1,
-  \ 'matlab' : 1,
-  \ 'objc' : 1,
-  \ 'perl' : 1,
-  \ 'perl6' : 1,
-  \ 'php' : 1,
-  \ 'python' : 1,
-  \ 'ruby' : 1,
-  \ 'tex' : 1,
-  \ 'xhtml' : 1,
-  \ 'xml' : 1,
-  \ 'xs' : 1,
-  \ 'yaml' : 1
-  \}
 
   "settings for localvimrc. sandbox: source lvimrc files in  sandbox for security reasons
 let g:localvimrc_sandbox=0
