@@ -96,12 +96,8 @@ set nobackup
 set dir-=.
 
   "set a color scheme. Other good ones: liquidcarbon, oceandeep, solarized
-if has('win32') || has('win64')
-  colorscheme oceandeep
-else
-  let g:solarized_italic = 0
-  colorscheme solarized
-endif
+let g:solarized_italic = 0
+colorscheme solarized
 set background=dark
 
   "Statusline options
