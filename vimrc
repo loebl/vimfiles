@@ -17,9 +17,6 @@ inoremap <C-X><C-b> <C-X><C-]>
 
 " Plugins + Options {{{
 
-  "read all plugins from ./bundle
-execute pathogen#infect()
-
   "YouCompleteMe config
 let g:ycm_error_symbol = 'e>'
 let g:ycm_warning_symbol = 'w>'
@@ -156,9 +153,6 @@ set foldlevel=6
 " }}}
 
 " Vim Options: programming related {{{
-
-  "OmniCppComplete options. TODO: Omnicomplete vs YouCompleteMe.
-"let OmniCpp_DisplayMode=1
 
   "UpdateTages function to update/create tags in current working directory
   "using universal-ctags (ctags.io)
