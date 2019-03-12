@@ -40,6 +40,7 @@ else
 endif
 nnoremap <leader>yf :YcmCompleter FixIt<CR>
 nnoremap <leader>yt :YcmCompleter GetType<CR>
+nnoremap <leader>yg :YcmCompleter GoTo<CR>
 "let g:ycm_extra_conf_globlist = ['$HOME/vimfiles/.ycm*']
 
   "settings for localvimrc. sandbox: source lvimrc files in  sandbox for security reasons
@@ -156,8 +157,9 @@ set foldlevel=6
 
   "UpdateTages function to update/create tags in current working directory
   "using universal-ctags (ctags.io)
+  "YCM needs the 'l'-field
 function! UpdateTags()
-  execute ":! ctags --languages=c,c++ --c++-kinds=+pl --fields=+iaKnS --extras=+fq --langmap=C++:+.cu.inl -R ."
+  execute ":! ctags --languages=c,c++ --c++-kinds=+pl --fields=+liaKnS --extras=+fq --langmap=C++:+.cu.inl -R ."
   echohl StatusLine | echo "C/C++ tag updated" | echohl None
 endfunction
 command Ut call UpdateTags()
