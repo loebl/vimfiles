@@ -226,6 +226,7 @@ if has('win32') || has('win64')
 
     "VS2015+ simple error messages, see also nmake-cmake-cl_VS15.log file:
   set errorformat+=%f(%l):\ %trror\ C%n:\ %m
+  set errorformat+=%f(%l):\ fatal\ %trror\ C%n:\ %m
   set errorformat+=%f(%l):\ %tarning\ C%n:\ %m
   set errorformat+=%f(%l):\ %tote:\ %m
     "VS2015+ remove template parameter messages (I usually don't have any use for them)

@@ -26,3 +26,9 @@ hg clone https://bitbucket.org/ns9tks/vim-fuzzyfinder
 
 Lawrencium (mercurial integration): https://bolt80.com/lawrencium/
 hg clone https://bitbucket.org/ludovicchabant/vim-lawrencium
+
+Literate vim plugin https://github.com/zyedidia/literate.vim
+git clone https://github.com/zyedidia/literate.vim.git
+
+Table Mode: Dhruvasagar/vim-table-mode
+git clone https://github.com/dhruvasagar/vim-table-mode.git
