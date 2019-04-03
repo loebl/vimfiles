@@ -1,13 +1,10 @@
-splice: http://sjl.bitbucket.org/splice.vim/
-hg clone https://bitbucket.org/sjl/splice.vim splice
+splice: https://sjl.bitbucket.io/splice.vim/
+git clone https://github.com/sjl/splice.vim.git splice
 
 YouCopmpleteMe: https://github.com/Valloric/YouCompleteMe
 git clone https://github.com/Valloric/YouCompleteMe.git YouCompleteMe
 cd YouCompleteMe
 git submodule update --init --recursive
-
-Solarized color scheme: https://github.com/altercation/vim-colors-solarized
-git clone https://github.com/altercation/vim-colors-solarized.git
 
 Local Vimrc (per folder vimrc): https://github.com/embear/vim-localvimrc
 git clone https://github.com/embear/vim-localvimrc.git

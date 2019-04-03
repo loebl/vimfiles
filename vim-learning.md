@@ -13,6 +13,7 @@
 - a: insert mode after current position. A: insert mode at the end of the line
 - o: insert mode on new line after current one. O: insert mode on new line before current one
 - R: replace mode
+- s: replace a character und go to insert mode. S: replace line and go to insert mode
 
 # 2. Simple actions in Normal Mode
 
