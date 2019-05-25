@@ -10,12 +10,12 @@ nnoremap gü g<C-]>
   "hooray for unused german umlauts!
 let mapleader="ä"
 
+  "remap tag completion to CTRL-X CTRL-B
+inoremap <C-X><C-b> <C-X><C-]>
+
 " }}}
 
 " Plugins + Options {{{
-
-  "read all plugins from ./bundle
-execute pathogen#infect()
 
   "YouCompleteMe config
 let g:ycm_error_symbol = 'e>'
@@ -40,50 +40,8 @@ else
 endif
 nnoremap <leader>yf :YcmCompleter FixIt<CR>
 nnoremap <leader>yt :YcmCompleter GetType<CR>
+nnoremap <leader>yg :YcmCompleter GoTo<CR>
 "let g:ycm_extra_conf_globlist = ['$HOME/vimfiles/.ycm*']
-  "languages supported by YouCompleteMe: C, C++, Obj-C, C#, Python, Go, Typescript, JavaScript
-  "Rust, other languages based on tags and syntax elements. Could move ycm to separate directory,
-  "enable YCM only for specific filetypes
-let g:ycm_filetype_whitelist = {
-  \ 'cpp' : 1,
-  \ 'cuda' : 1,
-  \ 'cs' : 1,
-  \ 'css' : 1,
-  \ 'dosbatch' : 1,
-  \ 'html' : 1,
-  \ 'htmldjango' : 1,
-  \ 'j': 1,
-  \ 'java' : 1,
-  \ 'javascript' : 1,
-  \ 'json' : 1,
-  \ 'jsp' : 1,
-  \ 'less' : 1,
-  \ 'lua' : 1,
-  \ 'make' : 1,
-  \ 'matlab' : 1,
-  \ 'objc' : 1,
-  \ 'perl' : 1,
-  \ 'perl6' : 1,
-  \ 'php' : 1,
-  \ 'python' : 1,
-  \ 'ruby' : 1,
-  \ 'tex' : 1,
-  \ 'xhtml' : 1,
-  \ 'xml' : 1,
-  \ 'xs' : 1,
-  \ 'yaml' : 1
-  \}
-
-  "Splice (hg merge tool) config
-  "nothing currently here!
-if has('win32') || has('win64')
-  let g:fuf_dataDir = '~/vimfiles/.cache-fufData'
-else
-  let g:fuf_dataDir = '~/.cache/vim_fufData'
-endif
-  "FuzzyFinder custom key bindings
-nnoremap <F2> :FufTag<CR>
-nnoremap <F3> :FufFile<CR>
 
   "settings for localvimrc. sandbox: source lvimrc files in  sandbox for security reasons
 let g:localvimrc_sandbox=0
@@ -93,15 +51,8 @@ let g:localvimrc_ask=0
 " }}}
 
 " Vim Options: editing, indenting {{{
-  "allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-  "automatically indent with the same whitespace as before
-set autoindent
-
-  "enable filetype plugins, so VIM tries to autodetect the filetype and use
-  " appropriate indention rules etc
-filetype plugin indent on
+  "how many spaces a tab counts for
+set tabstop=8
 
   "number of spaces for indentation
 set shiftwidth=2
@@ -113,7 +64,7 @@ set softtabstop=2
 set expandtab
 
   "set automatic formatting options, see fo-table
-set formatoptions=croqnj
+"set formatoptions=croqnj
 set textwidth=100
 
   "show matching parantheses
@@ -139,30 +90,19 @@ endif
   "disable backup files
 set nobackup
 
-  "enable syntax highlighting, if colors are available
-if &t_Co > 2 || has("gui_running")
-  syntax on
-endif
+  "do not place swap files in the local directory
+set dir-=.
 
   "set a color scheme. Other good ones: liquidcarbon, oceandeep, solarized
-if has('gui')
-  let g:solarized_italic = 0
-  colorscheme solarized
-elseif has('win32') || has('win64')
-  colorscheme oceandeep
-endif
+let g:solarized_italic = 0
+colorscheme solarized
 set background=dark
 
-  "always show statusline
-set laststatus=2
   "Statusline options
 set statusline=%f%m%r%h%w[%{&ff}][%{&fenc}]%y%=[%p%%][%l,%c%V]
 
   "Height of the command line
 "set cmdheight=2
-
-  "search incrementally
-set incsearch
 
   "enable line numbers
 set number
@@ -206,25 +146,20 @@ endif
   "folding
   "syntax: fold by the defined syntax rules. Not every language may provide one
   "indent: fold by indentation level
-set foldmethod=syntax
-set foldnestmax=3
+"set foldmethod=syntax
+set foldnestmax=5
   "all folds open
-set foldlevel=4
+set foldlevel=6
 
 " }}}
 
 " Vim Options: programming related {{{
 
-  "supply a tags file to look up function names and symbols
-set tags+=D:\projekte\ext\tags
-
-  "OmniCppComplete options. TODO: Omnicomplete vs YouCompleteMe.
-"let OmniCpp_DisplayMode=1
-
   "UpdateTages function to update/create tags in current working directory
   "using universal-ctags (ctags.io)
+  "YCM needs the 'l'-field
 function! UpdateTags()
-  execute ":! ctags --sort=yes --languages=c,c++ --c++-kinds=+cegmsvpl --fields=+liakKnsztS --extras=+fq --langmap=C++:+.cu.inl -R ."
+  execute ":! ctags --languages=c,c++ --c++-kinds=+pl --fields=+liaKnS --extras=+fq --langmap=C++:+.cu.inl -R ."
   echohl StatusLine | echo "C/C++ tag updated" | echohl None
 endfunction
 command Ut call UpdateTags()
@@ -240,6 +175,7 @@ if has('win32') || has('win64')
 
     "VS2015+ simple error messages, see also nmake-cmake-cl_VS15.log file:
   set errorformat+=%f(%l):\ %trror\ C%n:\ %m
+  set errorformat+=%f(%l):\ fatal\ %trror\ C%n:\ %m
   set errorformat+=%f(%l):\ %tarning\ C%n:\ %m
   set errorformat+=%f(%l):\ %tote:\ %m
     "VS2015+ remove template parameter messages (I usually don't have any use for them)
@@ -270,6 +206,10 @@ if has('win32') || has('win64')
     "remove cmake config lines
   set errorformat+=%-G--\ %m
 
+    "follow make recursion
+  set errorformat+=%D%*\\a[%*\\d]:\ Entering\ directory\ `%f'
+  set errorformat+=%X%*\\a[%*\\d]:\ Leaving\ directory\ `%f'
+
     "omit empty lines
   set errorformat+=%-G%\\s%#
 
@@ -280,9 +220,6 @@ endif
   "adding ** to the path lets it search recursively through all subdirectories from the current one
   "for various commands (see path), for example :find
 set path+=**
-
-  "enables a menu above the status line when tabbing completions in the commandline
-set wildmenu
 
   "MyDiff for Windows quoting
 function MyDiff()
@@ -314,7 +251,9 @@ function MyDiff()
   endif
 endfunction
 
-set diffexpr=MyDiff()
+if has('win32') || has('win64')
+  set diffexpr=MyDiff()
+endif
 
 " }}}
 
