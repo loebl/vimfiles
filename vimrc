@@ -118,7 +118,7 @@ if has('gui_running')
   if has('win32') || has('win64')
     set guifont=Terminus:h12:cANSI
   else
-    set guifont=xos4\ Terminus\ 12
+    set guifont=Source\ Code\ Pro\ 10
   endif
     "remove the menu and toolbar from gvim (m: menubar, T: toolbar, t: tearoff menu items)
   set guioptions-=m
